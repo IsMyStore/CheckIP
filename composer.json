@@ -1,5 +1,7 @@
 {
     "name": "ismystore/checkip",
+    "license": "MIT",
+    "readme": "README.md",
     "description": "A composer module to retrieve information from an IP address, using www.geoplugin.net",
     "autoload": {
         "psr-4": {
