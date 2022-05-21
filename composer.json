@@ -1,6 +1,7 @@
 {
     "name": "ismystore/checkip",
     "license": "MIT",
+    "type": "library",
     "readme": "README.md",
     "description": "A composer module to retrieve information from an IP address, using www.geoplugin.net",
     "autoload": {
@@ -14,7 +15,10 @@
             "email": "steellgold0@gmail.com"
         }
     ],
+
     "version": "1.0.0",
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "php" : ">=7.1.0"
+    }
 }

@@ -10,7 +10,6 @@ class CheckIP {
 	public ?string $state;
 	public ?string $city;
 	public ?string $address;
-	public ?array $location;
 
 	public ?bool $european;
 	public ?string $timezone;
@@ -24,7 +23,6 @@ class CheckIP {
 		$this->setState($this->getInfos($ip, "State"));
 		$this->setCity($this->getInfos($ip, "City"));
 		$this->setAddress($this->getInfos($ip, "Address"));
-		$this->setLocation($this->getInfos($ip, "Location"));
 
 		$this->setEuropean($this->getinfos($ip, "European"));
 		$this->setTimezone($this->getInfos($ip, "Timezone"));
@@ -117,20 +115,6 @@ class CheckIP {
 	}
 
 	/**
-	 * @return array|string|null
-	 */
-	public function getLocation(): array|string|null {
-		return $this->location;
-	}
-
-	/**
-	 * @param array|string|null $location
-	 */
-	public function setLocation(array|string|null $location): void {
-		$this->location = $location;
-	}
-
-	/**
 	 * @return array|bool|string|null
 	 */
 	public function getEuropean(): bool|array|string|null {
@@ -207,17 +191,6 @@ class CheckIP {
 
 			if (@strlen(trim($ipdat->geoplugin_countryCode)) == 2) {
 				switch ($purpose) {
-					case "location":
-						$output = array(
-							"city" => @$ipdat->geoplugin_city,
-							"state" => @$ipdat->geoplugin_regionName,
-							"country" => @$ipdat->geoplugin_countryName,
-							"country_code" => @$ipdat->geoplugin_countryCode,
-							"region_code" => @$ipdat->geoplugin_regionCode,
-							"continent" => @$continents[strtoupper($ipdat->geoplugin_continentCode)],
-							"continent_code" => @$ipdat->geoplugin_continentCode,
-						);
-						break;
 					case "address":
 						$address = array($ipdat->geoplugin_countryName);
 						if (@strlen($ipdat->geoplugin_regionName) >= 1)
