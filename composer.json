@@ -20,5 +20,8 @@
     "minimum-stability": "stable",
     "require": {
         "php" : ">=7.1.0"
+    },
+    "suggest": {
+        "php": ">=8.0.0"
     }
 }
