@@ -192,14 +192,14 @@ class CheckIP {
 	 * @return string|null
 	 */
 	public function getContinentName(): ?string {
-		return $this->continent;
+		return $this->continentName;
 	}
 
 	/**
-	 * @param string|null $continent
+	 * @param string|null $continentName
 	 */
-	public function setContinentName(?string $continent): void {
-		$this->continent = $continent;
+	public function setContinentName(?string $continentName): void {
+		$this->continentName = $continentName;
 	}
 
 	/**
