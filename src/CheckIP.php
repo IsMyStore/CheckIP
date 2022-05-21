@@ -44,8 +44,8 @@ class CheckIP {
 		$this->setCurrencyCode($infos["currencyCode"]);
 		$this->setCurrencySymbol($infos["currencySymbol"]);
 
-		$this->setContinentName();
-		$this->setContinentCode();
+		$this->setContinentName($infos["continentName"]);
+		$this->setContinentCode($infos["continentCode"]);
 	}
 
 	/**
