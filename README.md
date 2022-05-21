@@ -36,3 +36,11 @@ class MyAwesomeClass{
    }
 }
 ```
+
+## Test
+
+Make sure you are at the root of the module
+
+```bash
+php tests/test.php 
+```
