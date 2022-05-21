@@ -1,0 +1,17 @@
+{
+    "name": "ismystore/checkip",
+    "description": "A composer module to retrieve information from an IP address, using www.geoplugin.net",
+    "autoload": {
+        "psr-4": {
+            "ismystore\\checkip\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gaëtan H",
+            "email": "steellgold0@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
