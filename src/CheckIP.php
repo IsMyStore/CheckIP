@@ -66,28 +66,28 @@ class CheckIP {
 	 * @return array|string|null
 	 */
 	public function getCountryCode(): array|string|null {
-		return $this->country_code;
+		return $this->countryCode;
 	}
 
 	/**
 	 * @param array|string|null $country_code
 	 */
 	public function setCountryCode(array|string|null $country_code): void {
-		$this->country_code = $country_code;
+		$this->countryCode = $country_code;
 	}
 
 	/**
 	 * @return array|string|null
 	 */
 	public function getRegionCode(): array|string|null {
-		return $this->region_code;
+		return $this->regionCode;
 	}
 
 	/**
 	 * @param array|string|null $region_code
 	 */
 	public function setRegionCode(array|string|null $region_code): void {
-		$this->region_code = $region_code;
+		$this->regionCode = $region_code;
 	}
 
 	/**
