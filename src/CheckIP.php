@@ -5,29 +5,47 @@ namespace ismystore\checkip;
 class CheckIP {
 
 	public ?string $country;
-	public ?string $country_code;
-	public ?string $region_code;
+
+	public ?string $countryCode;
+
+	public ?string $regionCode;
+
 	public ?string $state;
+
 	public ?string $city;
+
 	public ?string $address;
 
 	public ?bool $european;
+
 	public ?string $timezone;
+
 	public ?string $currencyCode;
+
 	public ?string $currencySymbol;
 
-	public function __construct($ip) {
-		$this->setCountry($this->getInfos($ip, "Country"));
-		$this->setCountryCode($this->getInfos($ip, "Country Code"));
-		$this->setRegionCode($this->getInfos($ip, "Region Code"));
-		$this->setState($this->getInfos($ip, "State"));
-		$this->setCity($this->getInfos($ip, "City"));
-		$this->setAddress($this->getInfos($ip, "Address"));
+	public ?string $continentName;
 
-		$this->setEuropean($this->getinfos($ip, "European"));
-		$this->setTimezone($this->getInfos($ip, "Timezone"));
-		$this->setCurrencyCode($this->getInfos($ip, "Currency Code"));
-		$this->setCurrencySymbol($this->getInfos($ip,"Currency Symbol"));
+	public ?string $continentCode;
+
+	public function __construct($ip) {
+
+		$infos = $this->getInfos($ip);
+
+		$this->setCountry($infos["country"]);
+		$this->setCountryCode($infos["countryCode"]);
+		$this->setRegionCode($infos["regionCode"]);
+		$this->setState($infos["state"]);
+		$this->setCity($infos["city"]);
+		$this->setAddress($infos["address"]);
+
+		$this->setEuropean($infos["european"]);
+		$this->setTimezone($infos["timezone"]);
+		$this->setCurrencyCode($infos["currencyCode"]);
+		$this->setCurrencySymbol($infos["currencySymbol"]);
+
+		$this->setContinentName();
+		$this->setContinentCode();
 	}
 
 	/**
@@ -170,13 +188,40 @@ class CheckIP {
 		$this->currencySymbol = $currencySymbol;
 	}
 
-	private function getInfos($ip, string $toGet = "location"): array|string|null {
+	/**
+	 * @return string|null
+	 */
+	public function getContinentName(): ?string {
+		return $this->continent;
+	}
+
+	/**
+	 * @param string|null $continent
+	 */
+	public function setContinentName(?string $continent): void {
+		$this->continent = $continent;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getContinentCode(): ?string {
+		return $this->continentCode;
+	}
+
+	/**
+	 * @param string|null $continentCode
+	 */
+	public function setContinentCode(?string $continentCode): void {
+		$this->continentCode = $continentCode;
+	}
+
+	private function getInfos($ip): array|string|null {
 		$output = NULL;
-		if (filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
+		if (!$ip or filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
 			$ip = $_SERVER["REMOTE_ADDR"];
 		}
-		$purpose = str_replace(array("name", "\n", "\t", " ", "-", "_"), NULL, strtolower(trim($toGet)));
-		$support = array("location", "address", "city", "region", "state", "region_code", "country","countrycode", "european", "timezone", "currencyCode", "currencySymbol");
+
 		$continents = array(
 			"AF" => "Africa",
 			"AN" => "Antarctica",
@@ -186,48 +231,34 @@ class CheckIP {
 			"NA" => "North America",
 			"SA" => "South America"
 		);
-		if (filter_var($ip, FILTER_VALIDATE_IP) && in_array($purpose, $support)) {
+
+		if (filter_var($ip, FILTER_VALIDATE_IP)) {
 			$ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
 
 			if (@strlen(trim($ipdat->geoplugin_countryCode)) == 2) {
-				switch ($purpose) {
-					case "address":
-						$address = array($ipdat->geoplugin_countryName);
-						if (@strlen($ipdat->geoplugin_regionName) >= 1)
-							$address[] = $ipdat->geoplugin_regionName;
-						if (@strlen($ipdat->geoplugin_city) >= 1)
-							$address[] = $ipdat->geoplugin_city;
-						$output = implode(", ", array_reverse($address));
-						break;
-					case "city":
-						$output = @$ipdat->geoplugin_city;
-						break;
-					case "region":
-					case "state":
-						$output = @$ipdat->geoplugin_regionName;
-						break;
-					case "region_code":
-						$output = @$ipdat->geoplugin_regionCode;
-						break;
-					case "country":
-						$output = @$ipdat->geoplugin_countryName;
-						break;
-					case "countrycode":
-						$output = @$ipdat->geoplugin_countryCode;
-						break;
-					case "european":
-						$output = (bool)@$ipdat->geoplugin_inEU;
-						break;
-					case "timezone":
-						$output = @$ipdat->geoplugin_timezone;
-						break;
-					case "currencyCode":
-						$output = @$ipdat->geoplugin_currencyCode;
-						break;
-					case "currencySymbol":
-						$output = @$ipdat->geoplugin_currencySymbol;
-						break;
-				}
+				$address = array($ipdat->geoplugin_countryName);
+				if (@strlen($ipdat->geoplugin_regionName) >= 1)
+					$address[] = $ipdat->geoplugin_regionName;
+				if (@strlen($ipdat->geoplugin_city) >= 1)
+					$address[] = $ipdat->geoplugin_city;
+				$outputAddress = implode(", ", array_reverse($address));
+
+				$output = [
+					"country" => @$ipdat->geoplugin_countryName,
+					"countryCode" => @$ipdat->geoplugin_countryCode,
+					"regionCode" => @$ipdat->geoplugin_regionCode,
+					"state" => @$ipdat->geoplugin_regionName,
+					"city" => @$ipdat->geoplugin_city,
+					"address" => $outputAddress,
+
+					"european" => @$ipdat->geoplugin_european,
+					"timezone" => @$ipdat->geoplugin_timezone,
+					"currencyCode" => @$ipdat->geoplugin_currencyCode,
+					"currencySymbol" => @$ipdat->geoplugin_currencySymbol,
+
+					"continentName" => @$continents[strtoupper($ipdat->geoplugin_continentCode)],
+					"continentCode" => @$ipdat->geoplugin_continentCode,
+				];
 			}
 		}
 		return $output;
