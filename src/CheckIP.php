@@ -86,86 +86,86 @@ class CheckIP {
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getCountry(): array|string|null {
+	public function getCountry(): string {
 		return $this->country;
 	}
 
 	/**
-	 * @param array|string|null $country
+	 * @param string $country
 	 */
-	private function setCountry(array|string|null $country): void {
+	private function setCountry(string $country): void {
 		$this->country = $country;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getCountryCode(): array|string|null {
+	public function getCountryCode(): string {
 		return $this->countryCode;
 	}
 
 	/**
-	 * @param array|string|null $country_code
+	 * @param string $country_code
 	 */
-	private function setCountryCode(array|string|null $country_code): void {
+	private function setCountryCode(string $country_code): void {
 		$this->countryCode = $country_code;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getRegionCode(): array|string|null {
+	public function getRegionCode(): string {
 		return $this->regionCode;
 	}
 
 	/**
-	 * @param array|string|null $region_code
+	 * @param string $region_code
 	 */
-	private function setRegionCode(array|string|null $region_code): void {
+	private function setRegionCode(string $region_code): void {
 		$this->regionCode = $region_code;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getState(): array|string|null {
+	public function getState(): string {
 		return $this->state;
 	}
 
 	/**
-	 * @param array|string|null $state
+	 * @param string $state
 	 */
-	private function setState(array|string|null $state): void {
+	private function setState(string $state): void {
 		$this->state = $state;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getCity(): array|string|null {
+	public function getCity(): string {
 		return $this->city;
 	}
 
 	/**
-	 * @param array|string|null $city
+	 * @param string $city
 	 */
-	private function setCity(array|string|null $city): void {
+	private function setCity(string $city): void {
 		$this->city = $city;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getAddress(): array|string|null {
+	public function getAddress(): string {
 		return $this->address;
 	}
 
 	/**
-	 * @param array|string|null $address
+	 * @param string $address
 	 */
-	private function setAddress(array|string|null $address): void {
+	private function setAddress(string $address): void {
 		$this->address = $address;
 	}
 
@@ -184,44 +184,44 @@ class CheckIP {
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getTimezone(): array|string|null {
+	public function getTimezone(): string {
 		return $this->timezone;
 	}
 
 	/**
-	 * @param array|string|null $timezone
+	 * @param string $timezone
 	 */
-	private function setTimezone(array|string|null $timezone): void {
+	private function setTimezone(string $timezone): void {
 		$this->timezone = $timezone;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getCurrencyCode(): array|string|null {
+	public function getCurrencyCode(): string {
 		return $this->currencyCode;
 	}
 
 	/**
-	 * @param array|string|null $currencyCode
+	 * @param string $currencyCode
 	 */
-	private function setCurrencyCode(array|string|null $currencyCode): void {
+	private function setCurrencyCode(string $currencyCode): void {
 		$this->currencyCode = $currencyCode;
 	}
 
 	/**
-	 * @return array|string|null
+	 * @return string
 	 */
-	public function getCurrencySymbol(): array|string|null {
+	public function getCurrencySymbol(): string {
 		return $this->currencySymbol;
 	}
 
 	/**
-	 * @param array|string|null $currencySymbol
+	 * @param string $currencySymbol
 	 */
-	private function setCurrencySymbol(array|string|null $currencySymbol): void {
+	private function setCurrencySymbol(string $currencySymbol): void {
 		$this->currencySymbol = $currencySymbol;
 	}
 
