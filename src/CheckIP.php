@@ -289,7 +289,7 @@ class CheckIP {
 					"city" => @$ipdat->geoplugin_city,
 					"address" => $outputAddress,
 
-					"european" => @$ipdat->geoplugin_european,
+					"european" => (boolean)@$ipdat->geoplugin_inEU,
 					"timezone" => @$ipdat->geoplugin_timezone,
 					"currencyCode" => @$ipdat->geoplugin_currencyCode,
 					"currencySymbol" => @$ipdat->geoplugin_currencySymbol,
