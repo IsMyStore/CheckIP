@@ -16,7 +16,6 @@
         }
     ],
 
-    "version": "1.0.1",
     "minimum-stability": "stable",
     "require": {
         "php" : ">=7.1.0"
