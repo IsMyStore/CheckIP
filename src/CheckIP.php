@@ -28,6 +28,10 @@ class CheckIP {
 
 	private ?string $continentCode;
 
+	private ?string $latitude;
+
+	private ?string $longitude;
+
 	public function __construct($ip) {
 
 		$infos = $this->getInfos($ip);
@@ -46,6 +50,9 @@ class CheckIP {
 
 		$this->setContinentName($infos["continentName"] ?? null);
 		$this->setContinentCode($infos["continentCode"] ?? null);
+
+		$this->setLatitude($infos["latitude"] ?? null);
+		$this->setLongitude($infos["longitude"] ?? null);
 	}
 
 	/**
@@ -216,6 +223,34 @@ class CheckIP {
 		$this->continentCode = $continentCode;
 	}
 
+	/**
+	 * @return string|null
+	 */
+	public function getLatitude(): ?string {
+		return $this->latitude;
+	}
+
+	/**
+	 * @param string|null $latitude
+	 */
+	private function setLatitude(?string $latitude): void {
+		$this->latitude = $latitude;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getLongitude(): ?string {
+		return $this->longitude;
+	}
+
+	/**
+	 * @param string|null $longitude
+	 */
+	private function setLongitude(?string $longitude): void {
+		$this->longitude = $longitude;
+	}
+
 	private function getInfos($ip): array|string|null {
 		$output = NULL;
 		if (!$ip or filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
@@ -234,6 +269,7 @@ class CheckIP {
 
 		if (filter_var($ip, FILTER_VALIDATE_IP)) {
 			$ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
+			var_dump($ipdat);
 
 			if (@strlen(trim($ipdat->geoplugin_countryCode)) == 2) {
 				$address = array($ipdat->geoplugin_countryName);
@@ -258,6 +294,9 @@ class CheckIP {
 
 					"continentName" => @$continents[strtoupper($ipdat->geoplugin_continentCode)],
 					"continentCode" => @$ipdat->geoplugin_continentCode,
+
+					"latitude" => @$ipdat->geoplugin_latitude,
+					"longitude" => @$ipdat->geoplugin_longitude,
 				];
 			}
 		}
