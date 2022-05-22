@@ -31,7 +31,6 @@ class CheckIP {
 	public function __construct($ip) {
 
 		$infos = $this->getInfos($ip);
-		var_dump($infos);
 
 		$this->setCountry($infos["country"] ?? null);
 		$this->setCountryCode($infos["countryCode"] ?? null);
