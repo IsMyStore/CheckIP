@@ -143,16 +143,16 @@ class CheckIP {
 	}
 
 	/**
-	 * @return array|bool|string|null
+	 * @return bool
 	 */
-	public function getEuropean(): bool|array|string|null {
+	public function getEuropean(): bool {
 		return $this->european;
 	}
 
 	/**
-	 * @param array|bool|string|null $european
+	 * @param bool $european
 	 */
-	private function setEuropean(bool|array|string|null $european): void {
+	private function setEuropean(bool $european): void {
 		$this->european = $european;
 	}
 
