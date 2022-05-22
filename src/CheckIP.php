@@ -58,7 +58,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $country
 	 */
-	public function setCountry(array|string|null $country): void {
+	private function setCountry(array|string|null $country): void {
 		$this->country = $country;
 	}
 
@@ -72,7 +72,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $country_code
 	 */
-	public function setCountryCode(array|string|null $country_code): void {
+	private function setCountryCode(array|string|null $country_code): void {
 		$this->countryCode = $country_code;
 	}
 
@@ -86,7 +86,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $region_code
 	 */
-	public function setRegionCode(array|string|null $region_code): void {
+	private function setRegionCode(array|string|null $region_code): void {
 		$this->regionCode = $region_code;
 	}
 
@@ -100,7 +100,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $state
 	 */
-	public function setState(array|string|null $state): void {
+	private function setState(array|string|null $state): void {
 		$this->state = $state;
 	}
 
@@ -114,7 +114,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $city
 	 */
-	public function setCity(array|string|null $city): void {
+	private function setCity(array|string|null $city): void {
 		$this->city = $city;
 	}
 
@@ -128,7 +128,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $address
 	 */
-	public function setAddress(array|string|null $address): void {
+	private function setAddress(array|string|null $address): void {
 		$this->address = $address;
 	}
 
@@ -142,7 +142,7 @@ class CheckIP {
 	/**
 	 * @param array|bool|string|null $european
 	 */
-	public function setEuropean(bool|array|string|null $european): void {
+	private function setEuropean(bool|array|string|null $european): void {
 		$this->european = $european;
 	}
 
@@ -156,7 +156,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $timezone
 	 */
-	public function setTimezone(array|string|null $timezone): void {
+	private function setTimezone(array|string|null $timezone): void {
 		$this->timezone = $timezone;
 	}
 
@@ -170,7 +170,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $currencyCode
 	 */
-	public function setCurrencyCode(array|string|null $currencyCode): void {
+	private function setCurrencyCode(array|string|null $currencyCode): void {
 		$this->currencyCode = $currencyCode;
 	}
 
@@ -184,7 +184,7 @@ class CheckIP {
 	/**
 	 * @param array|string|null $currencySymbol
 	 */
-	public function setCurrencySymbol(array|string|null $currencySymbol): void {
+	private function setCurrencySymbol(array|string|null $currencySymbol): void {
 		$this->currencySymbol = $currencySymbol;
 	}
 
@@ -198,7 +198,7 @@ class CheckIP {
 	/**
 	 * @param string|null $continentName
 	 */
-	public function setContinentName(?string $continentName): void {
+	private function setContinentName(?string $continentName): void {
 		$this->continentName = $continentName;
 	}
 
@@ -212,7 +212,7 @@ class CheckIP {
 	/**
 	 * @param string|null $continentCode
 	 */
-	public function setContinentCode(?string $continentCode): void {
+	private function setContinentCode(?string $continentCode): void {
 		$this->continentCode = $continentCode;
 	}
 
