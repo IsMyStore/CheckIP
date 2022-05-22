@@ -31,21 +31,22 @@ class CheckIP {
 	public function __construct($ip) {
 
 		$infos = $this->getInfos($ip);
+		var_dump($infos);
 
-		$this->setCountry($infos["country"]);
-		$this->setCountryCode($infos["countryCode"]);
-		$this->setRegionCode($infos["regionCode"]);
-		$this->setState($infos["state"]);
-		$this->setCity($infos["city"]);
-		$this->setAddress($infos["address"]);
+		$this->setCountry($infos["country"] ?? null);
+		$this->setCountryCode($infos["countryCode"] ?? null);
+		$this->setRegionCode($infos["regionCode"] ?? null);
+		$this->setState($infos["state"] ?? null);
+		$this->setCity($infos["city"] ?? null);
+		$this->setAddress($infos["address"] ?? null);
 
-		$this->setEuropean($infos["european"]);
-		$this->setTimezone($infos["timezone"]);
-		$this->setCurrencyCode($infos["currencyCode"]);
-		$this->setCurrencySymbol($infos["currencySymbol"]);
+		$this->setEuropean($infos["european"] ?? false);
+		$this->setTimezone($infos["timezone"] ?? date_default_timezone_get());
+		$this->setCurrencyCode($infos["currencyCode"] ?? "USD");
+		$this->setCurrencySymbol($infos["currencySymbol"] ?? "$");
 
-		$this->setContinentName($infos["continentName"]);
-		$this->setContinentCode($infos["continentCode"]);
+		$this->setContinentName($infos["continentName"] ?? null);
+		$this->setContinentCode($infos["continentCode"] ?? null);
 	}
 
 	/**
