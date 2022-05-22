@@ -55,6 +55,9 @@ class CheckIP {
 		$this->setLongitude($infos["longitude"] ?? null);
 	}
 
+	public function reloc($ip, ?array $coutriesBlacklisted = []): void {
+		$this->__construct($ip, $coutriesBlacklisted);
+	}
 	/**
 	 * @return array|string|null
 	 */
