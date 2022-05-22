@@ -32,9 +32,12 @@ class CheckIP {
 
 	private ?string $longitude;
 
-	public function __construct($ip) {
+	private ?array $blacklisted_countries = [];
 
+	public function __construct($ip, ?array $countriesBlacklisted = []) {
 		$infos = $this->getInfos($ip);
+
+		$this->setBlacklistedCountries($countriesBlacklisted);
 
 		$this->setCountry($infos["country"] ?? null);
 		$this->setCountryCode($infos["countryCode"] ?? null);
@@ -58,6 +61,30 @@ class CheckIP {
 	public function reloc($ip, ?array $coutriesBlacklisted = []): void {
 		$this->__construct($ip, $coutriesBlacklisted);
 	}
+
+	/**
+	 * @return array|null
+	 */
+	public function getBlacklistedCountries(): ?array {
+		return $this->blacklisted_countries;
+	}
+
+	/**
+	 * @param array|null $blacklisted_countries
+	 */
+	public function setBlacklistedCountries(?array $blacklisted_countries): void {
+		$this->blacklisted_countries = $blacklisted_countries;
+	}
+
+	public function isBlacklisted(): bool {
+		if (!in_array($this->getCountryCode(), $this->getBlacklistedCountries())) {
+			if (!in_array($this->getCountry(), $this->getBlacklistedCountries())) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	/**
 	 * @return array|string|null
 	 */
