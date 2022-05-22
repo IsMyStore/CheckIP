@@ -4,29 +4,29 @@ namespace ismystore\checkip;
 
 class CheckIP {
 
-	public ?string $country;
+	private ?string $country;
 
-	public ?string $countryCode;
+	private ?string $countryCode;
 
-	public ?string $regionCode;
+	private ?string $regionCode;
 
-	public ?string $state;
+	private ?string $state;
 
-	public ?string $city;
+	private ?string $city;
 
-	public ?string $address;
+	private ?string $address;
 
-	public ?bool $european;
+	private ?bool $european;
 
-	public ?string $timezone;
+	private ?string $timezone;
 
-	public ?string $currencyCode;
+	private ?string $currencyCode;
 
-	public ?string $currencySymbol;
+	private ?string $currencySymbol;
 
-	public ?string $continentName;
+	private ?string $continentName;
 
-	public ?string $continentCode;
+	private ?string $continentCode;
 
 	public function __construct($ip) {
 
