@@ -269,7 +269,6 @@ class CheckIP {
 
 		if (filter_var($ip, FILTER_VALIDATE_IP)) {
 			$ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
-			var_dump($ipdat);
 
 			if (@strlen(trim($ipdat->geoplugin_countryCode)) == 2) {
 				$address = array($ipdat->geoplugin_countryName);
